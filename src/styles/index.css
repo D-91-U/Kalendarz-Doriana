@@ -1,0 +1,30 @@
+/* Reset marginesów i przyjemny domyślny wygląd */
+* {
+  box-sizing: border-box; /* Lepsze liczenie szerokości/wysokości */
+}
+
+html, body, #root {
+  height: 100%;           /* Dzięki temu main może mieć min-height */
+  margin: 0;              /* Zerujemy domyślne marginesy */
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; /* Czytelna czcionka */
+  background: #f6f7fb;    /* Jasne tło */
+  color: #222;            /* Kolor tekstu */
+}
+
+a {
+  text-decoration: none;  /* Linki bez podkreślenia */
+  color: #0a58ca;         /* Delikatny niebieski */
+}
+
+a:hover {
+  text-decoration: underline; /* Podkreślenie przy hover dla dostępności */
+}
+
+main {
+  max-width: 1024px;      /* Czytelna szerokość treści */
+  margin: 0 auto;         /* Wyśrodkowanie */
+  min-height: calc(100% - 60px); /* „pełny ekran” minus nawigacja */
+}
