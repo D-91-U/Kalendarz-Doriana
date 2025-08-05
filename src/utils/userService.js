@@ -54,8 +54,31 @@ export function setSession(email) {
 export function getSession() {
   return getItem(SESSION_KEY, null);
 }
-
 // Czyści sesję (wylogowanie)
 export function clearSession() {
   setItem(SESSION_KEY, null);
+}
+// Logowanie użytkownika po email + password
+export function loginUser({ email, password }) {
+  // Pobieramy wszystkich użytkowników z localStorage
+  const users = getAllUsers();
+
+  // Szukamy użytkownika po emailu (case-insensitive)
+  const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+
+  // Jeśli nie ma użytkownika — błąd
+  if (!user) {
+    return { ok: false, error: 'Nieprawidłowy e-mail lub hasło.' };
+  }
+
+  // Jeśli hasło się nie zgadza — błąd
+  if (user.password !== password) {
+    return { ok: false, error: 'Nieprawidłowy e-mail lub hasło.' };
+  }
+
+  // Ustawiamy sesję (zapis do localStorage)
+  setSession(user.email);
+
+  // Zwracamy sukces i (opcjonalnie) dane o użytkowniku
+  return { ok: true, user: { id: user.id, name: user.name, email: user.email } };
 }
