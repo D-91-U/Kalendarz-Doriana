@@ -79,3 +79,14 @@ export function removeEvent(id) {
 
   return { ok: true };
 }
+
+export function updateEvent(updatedEvent) {
+  const session = getSession();
+  if (!session?.email) return { ok: false, error: 'Brak zalogowania.' };
+  const all = getAllEvents();
+  const idx = all.findIndex(e => e.id === updatedEvent.id && e.ownerEmail === session.email);
+  if (idx === -1) return { ok: false, error: 'Nie znaleziono wydarzenia.' };
+  all[idx] = { ...all[idx], ...updatedEvent };
+  saveAllEvents(all);
+  return { ok: true };
+}

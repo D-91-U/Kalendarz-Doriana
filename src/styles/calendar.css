@@ -1,0 +1,117 @@
+/* Prosty styl widoku kalendarza */
+
+.calendar-wrap {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  background-color: turquoise;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 kolumn - dni tygodnia */
+  gap: 8px;
+}
+
+.calendar-dow {
+  font-weight: 600;
+  text-align: center;
+  padding: 8px 0;
+  color: #444;
+}
+
+.calendar-cell {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  min-height: 96px;               /* wysokość boxa dnia */
+  padding: 8px;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calendar-cell:hover {
+  background: #f2f6ff;            /* delikatne podświetlenie */
+  cursor: pointer;
+}
+
+.calendar-daynum {
+  font-weight: 700;
+  font-size: 14px;
+  color: #333;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  border: 1px solid;
+}
+
+.badge-family {
+  background: #e8f3ff;
+  border-color:lightblue;
+}
+
+.badge-logistics {
+  background: #eafbea;
+  border-color: #b9efc4;
+}
+
+.event-title {
+  font-size: 12px;
+  color: #222;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: #fff;
+  width: 420px;
+  max-width: calc(100% - 24px);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+  display: grid;
+  gap: 12px;
+}
+
+/* Mały odstęp między tytułem a ikonką edycji */
+.event-title + button {
+  margin-left: 4px;
+  background-color: rgb(6, 203, 203);
+}
+
+
+/* Dzisiejszy dzień */
+.calendar-today {
+  border: 2px solid #0a58ca;
+  background: turquoise;
+}
+
+/* Edytowalny tytuł */
+.event-title { cursor: pointer; }
+.event-title:hover { text-decoration: underline; }
+
